@@ -8,3 +8,4 @@ pydantic
 sqlalchemy 
 pymysql 
 jinja2
+mysql

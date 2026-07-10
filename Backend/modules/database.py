@@ -1,5 +1,8 @@
 import mysql.connector
 from mysql.connector import Error
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 class MySQLDatabase:
@@ -8,8 +11,8 @@ class MySQLDatabase:
             self.connection = mysql.connector.connect(
                 host="localhost",
                 user="root",
-                password="your_password",
-                database="your_database"
+                password=os.getenv("DATABASE+PASSWORD"),
+                database="library_management"
             )
 
             self.cursor = self.connection.cursor(dictionary=True)
@@ -104,4 +107,4 @@ class MySQLDatabase:
         if self.connection.is_connected():
             self.cursor.close()
             self.connection.close()
-            print("
+            print("Database Closed")
