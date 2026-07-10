@@ -1,264 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard | Digital Library</title>
-</head>
-<body>
+<li id="menu-dashboard">
+    <a href="dashboard.html">Dashboard</a>
+</li>
 
-<div id="dashboard-container">
+<li id="menu-book-catalog">
+    <a href="book-catalog.html">Book Catalog</a>
+</li>
 
-    <!-- Sidebar -->
-    <aside id="sidebar">
+<li id="menu-access-requests">
+    <a href="access-requests.html">Access Requests</a>
+</li>
 
-        <div id="logo-section">
-            <h2 id="library-logo">📚 Digital Library</h2>
-        </div>
+<li id="menu-active-readers">
+    <a href="active-readers.html">Active Readers</a>
+</li>
 
-        <nav id="sidebar-menu">
-            <ul id="menu-list">
+<li id="menu-members">
+    <a href="members.html">Members</a>
+</li>
 
-                <li id="menu-dashboard">
-                    <a href="dashboard.html">Dashboard</a>
-                </li>
+<li id="menu-categories">
+    <a href="categories.html">Categories</a>
+</li>
 
-                <li id="menu-book-catalog">
-                    <a href="book-catalog.html">Book Catalog</a>
-                </li>
+<li id="menu-profile">
+    <a href="profile.html">Profile</a>
+</li>
 
-                <li id="menu-access-requests">
-                    <a href="access-requests.html">Access Requests</a>
-                </li>
-
-                <li id="menu-active-readers">
-                    <a href="active-readers.html">Active Readers</a>
-                </li>
-
-                <li id="menu-members">
-                    <a href="members.html">Members</a>
-                </li>
-
-                <li id="menu-categories">
-                    <a href="categories.html">Categories</a>
-                </li>
-
-                <li id="menu-reports">
-                    <a href="reports.html">Reports</a>
-                </li>
-
-                <li id="menu-profile">
-                    <a href="profile.html">Profile</a>
-                </li>
-
-                <li id="menu-logout">
-                    <a href="../login.html">Logout</a>
-                </li>
-
-            </ul>
-        </nav>
-
-    </aside>
-
-    <!-- Main Content -->
-    <main id="main-content">
-
-        <!-- Header -->
-        <header id="dashboard-header">
-
-            <div id="welcome-section">
-                <h1 id="dashboard-title">Admin Dashboard</h1>
-                <p id="dashboard-subtitle">
-                    Welcome back, Administrator
-                </p>
-            </div>
-
-            <div id="admin-profile">
-                <img src="../images/admin-avatar.png"
-                     alt="Admin"
-                     id="admin-image">
-
-                <span id="admin-name">
-                    Library Admin
-                </span>
-            </div>
-
-        </header>
-
-        <!-- Statistics -->
-        <section id="statistics-section">
-
-            <div id="total-members-card">
-                <h3>Total Members</h3>
-                <p id="total-members-count">327</p>
-            </div>
-
-            <div id="pending-requests-card">
-                <h3>Pending Requests</h3>
-                <p id="pending-requests-count">18</p>
-            </div>
-
-            <div id="active-readers-card">
-                <h3>Active Readers</h3>
-                <p id="active-readers-count">143</p>
-            </div>
-
-        </section>
-
-        <!-- Recent Book Access -->
-        <section id="recent-activity">
-
-            <h2 id="recent-activity-title">
-                Recent Book Access
-            </h2>
-
-            <table id="activity-table" border="1" cellpadding="10">
-
-                <thead>
-
-                    <tr>
-                        <th>User Name</th>
-                        <th>Book Name</th>
-                        <th>Access Date</th>
-                        <th>Expiry Date</th>
-                        <th>Remaining Time</th>
-                        <th>Status</th>
-                    </tr>
-
-                </thead>
-
-                <tbody id="activity-table-body">
-
-                    <tr>
-                        <td>Rahul Sharma</td>
-                        <td>Introduction to Algorithms</td>
-                        <td>10 Jul 2026</td>
-                        <td>17 Jul 2026</td>
-                        <td>7 Days</td>
-                        <td>Active</td>
-                    </tr>
-
-                    <tr>
-                        <td>Priya Das</td>
-                        <td>Database Management System</td>
-                        <td>09 Jul 2026</td>
-                        <td>16 Jul 2026</td>
-                        <td>6 Days</td>
-                        <td>Active</td>
-                    </tr>
-
-                    <tr>
-                        <td>Arjun Singh</td>
-                        <td>Python Programming</td>
-                        <td>08 Jul 2026</td>
-                        <td>15 Jul 2026</td>
-                        <td>5 Days</td>
-                        <td>Active</td>
-                    </tr>
-
-                    <tr>
-                        <td>Sneha Roy</td>
-                        <td>Computer Networks</td>
-                        <td>07 Jul 2026</td>
-                        <td>14 Jul 2026</td>
-                        <td>4 Days</td>
-                        <td>Active</td>
-                    </tr>
-
-                    <tr>
-                        <td>Amit Kumar</td>
-                        <td>Operating System Concepts</td>
-                        <td>06 Jul 2026</td>
-                        <td>13 Jul 2026</td>
-                        <td>3 Days</td>
-                        <td>Active</td>
-                    </tr>
-
-                    <tr>
-                        <td>Neha Verma</td>
-                        <td>Artificial Intelligence</td>
-                        <td>05 Jul 2026</td>
-                        <td>12 Jul 2026</td>
-                        <td>2 Days</td>
-                        <td>Active</td>
-                    </tr>
-
-                    <tr>
-                        <td>Rohan Gupta</td>
-                        <td>Machine Learning Basics</td>
-                        <td>04 Jul 2026</td>
-                        <td>11 Jul 2026</td>
-                        <td>1 Day</td>
-                        <td>Active</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </section>
-
-        <!-- Pending Requests -->
-        <section id="pending-request-section">
-
-            <h2 id="pending-request-title">
-                Pending Access Requests
-            </h2>
-
-            <table id="request-table" border="1" cellpadding="10">
-
-                <thead>
-
-                    <tr>
-                        <th>User</th>
-                        <th>Requested Book</th>
-                        <th>Request Date</th>
-                        <th>Action</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>Riya Sen</td>
-                        <td>Clean Code</td>
-                        <td>10 Jul 2026</td>
-                        <td>
-                            <button id="approve-btn-1">Approve</button>
-                            <button id="reject-btn-1">Reject</button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Aditya Bose</td>
-                        <td>Data Structures in C</td>
-                        <td>10 Jul 2026</td>
-                        <td>
-                            <button id="approve-btn-2">Approve</button>
-                            <button id="reject-btn-2">Reject</button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td>Megha Roy</td>
-                        <td>Computer Organization</td>
-                        <td>09 Jul 2026</td>
-                        <td>
-                            <button id="approve-btn-3">Approve</button>
-                            <button id="reject-btn-3">Reject</button>
-                        </td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </section>
-
-    </main>
-
-</div>
-
-</body>
-</html>
+<li id="menu-logout">
+    <a href="../index.html">Logout</a>
+</li>
