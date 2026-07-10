@@ -4,240 +4,445 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Categories</title>
+    <style>
+        /* Modern Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* Layout Container */
+        #categories-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styling */
+        #sidebar {
+            width: 260px;
+            background-color: #1e293b;
+            color: #fff;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+        }
+
+        #logo-section {
+            padding-bottom: 24px;
+            border-bottom: 1px solid #334155;
+            margin-bottom: 20px;
+        }
+
+        #library-logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        #sidebar-menu {
+            flex: 1;
+        }
+
+        #menu-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #menu-list li a {
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: block;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        #menu-list li a:hover {
+            background-color: #334155;
+            color: #fff;
+        }
+
+        /* Highlight Active Menu Item */
+        #menu-categories a {
+            background-color: #2563eb;
+            color: #fff;
+        }
+
+        /* Highlight Logout Separately */
+        #menu-logout a:hover {
+            background-color: #ef4444;
+            color: #fff;
+        }
+
+        /* Main Content Styling */
+        #main-content {
+            margin-left: 260px; /* Offset for fixed sidebar */
+            flex: 1;
+            padding: 40px;
+            background-color: #f8fafc;
+        }
+
+        #categories-page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        #page-header {
+            margin-bottom: 32px;
+        }
+
+        #page-title {
+            font-size: 1.85rem;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        #page-description {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* Add Category Form Section */
+        #add-category-section {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 32px;
+        }
+
+        #add-category-title {
+            font-size: 1.2rem;
+            color: #1e293b;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        #category-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        #category-name, #category-description {
+            width: 100%;
+            padding: 10px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            color: #334155;
+            transition: border-color 0.2s;
+        }
+
+        #category-description {
+            resize: vertical;
+        }
+
+        #category-name:focus, #category-description:focus {
+            border-color: #2563eb;
+        }
+
+        #add-category-btn {
+            align-self: flex-start;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        #add-category-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Search Bar */
+        #search-section {
+            margin-bottom: 20px;
+        }
+
+        #search-category {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: border-color 0.2s;
+        }
+
+        #search-category:focus {
+            border-color: #2563eb;
+        }
+
+        /* Table Styling */
+        #category-table-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        #category-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            border: none; /* Replaced HTML attribute border styles */
+        }
+
+        #category-table th {
+            background-color: #f1f5f9;
+            color: #475569;
+            font-weight: 600;
+            padding: 16px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        #category-table td {
+            padding: 16px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.95rem;
+            color: #334155;
+            vertical-align: middle;
+        }
+
+        #category-table tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* Cell Styling Details */
+        [id^="category-id"] {
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        [id^="category-title"] {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        [id^="book-count"] {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        /* Action Buttons Elements */
+        #category-table td button {
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid transparent;
+            margin-right: 6px;
+            transition: all 0.2s;
+        }
+
+        button[id^="edit-category"] {
+            background-color: #eff6ff;
+            color: #2563eb;
+        }
+
+        button[id^="edit-category"]:hover {
+            background-color: #2563eb;
+            color: #fff;
+        }
+
+        button[id^="delete-category"] {
+            background-color: #fef2f2;
+            color: #dc2626;
+        }
+
+        button[id^="delete-category"]:hover {
+            background-color: #dc2626;
+            color: #fff;
+        }
+
+        /* Pagination Section */
+        #pagination-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        #page-number {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        #previous-page, #next-page {
+            background-color: #fff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        #previous-page:hover, #next-page:hover {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+
+        /* Responsive Breakpoints */
+        @media(max-width: 992px) {
+            #categories-container {
+                flex-direction: column;
+            }
+            #sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+            #main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            #add-category-btn {
+                width: 100%;
+            }
+            #category-table-section {
+                overflow-x: auto;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <div id="categories-container">
 
-    <!-- Sidebar -->
     <aside id="sidebar">
-
         <div id="logo-section">
             <h2 id="library-logo">📚 Digital Library</h2>
         </div>
 
         <nav id="sidebar-menu">
-
             <ul id="menu-list">
-
                 <li id="menu-dashboard">
                     <a href="dashboard.html">Dashboard</a>
                 </li>
-
                 <li id="menu-book-catalog">
                     <a href="book-catalog.html">Book Catalog</a>
                 </li>
-
                 <li id="menu-access-requests">
                     <a href="access-requests.html">Access Requests</a>
                 </li>
-
                 <li id="menu-active-readers">
                     <a href="active-readers.html">Active Readers</a>
                 </li>
-
                 <li id="menu-members">
                     <a href="members.html">Members</a>
                 </li>
-
                 <li id="menu-categories">
                     <a href="categories.html">Categories</a>
                 </li>
-
                 <li id="menu-profile">
                     <a href="profile.html">Profile</a>
                 </li>
-
                 <li id="menu-logout">
                     <a href="../index.html">Logout</a>
                 </li>
-
             </ul>
-
         </nav>
-
     </aside>
 
-    <!-- Main Content -->
     <main id="main-content">
-
         <div id="categories-page">
 
-            <!-- Header -->
-
             <header id="page-header">
-
-                <h1 id="page-title">
-                    Book Categories
-                </h1>
-
+                <h1 id="page-title">Book Categories</h1>
                 <p id="page-description">
                     Manage all book categories available in the digital library.
                 </p>
-
             </header>
 
-            <!-- Add Category -->
-
             <section id="add-category-section">
-
-                <h2 id="add-category-title">
-                    Add New Category
-                </h2>
-
+                <h2 id="add-category-title">Add New Category</h2>
                 <form id="category-form">
-
-                    <input
-                        type="text"
-                        id="category-name"
-                        name="categoryName"
-                        placeholder="Category Name"
-                        required>
-
-                    <textarea
-                        id="category-description"
-                        name="categoryDescription"
-                        placeholder="Category Description"
-                        rows="3">
-                    </textarea>
-
-                    <button
-                        type="submit"
-                        id="add-category-btn">
-                        Add Category
-                    </button>
-
+                    <input type="text" id="category-name" name="categoryName" placeholder="Category Name" required>
+                    <textarea id="category-description" name="categoryDescription" placeholder="Category Description" rows="3"></textarea>
+                    <button type="submit" id="add-category-btn">Add Category</button>
                 </form>
-
             </section>
-
-            <!-- Search -->
 
             <section id="search-section">
-
-                <input
-                    type="text"
-                    id="search-category"
-                    placeholder="Search Category">
-
+                <input type="text" id="search-category" placeholder="Search Category">
             </section>
-
-            <!-- Category Table -->
 
             <section id="category-table-section">
-
-                <table id="category-table" border="1">
-
+                <table id="category-table">
                     <thead>
-
                         <tr>
-
                             <th>ID</th>
-
                             <th>Category Name</th>
-
                             <th>Description</th>
-
                             <th>Total Books</th>
-
                             <th>Actions</th>
-
                         </tr>
-
                     </thead>
-
                     <tbody>
-
                         <tr id="category-row-1">
-
-                            <td id="category-id-1">
-                                C001
-                            </td>
-
-                            <td id="category-title-1">
-                                Programming
-                            </td>
-
-                            <td id="category-desc-1">
-                                Programming related books
-                            </td>
-
-                            <td id="book-count-1">
-                                54
-                            </td>
-
+                            <td id="category-id-1">C001</td>
+                            <td id="category-title-1">Programming</td>
+                            <td id="category-desc-1">Programming related books</td>
+                            <td id="book-count-1">54</td>
                             <td>
-
-                                <button id="edit-category-1">
-                                    Edit
-                                </button>
-
-                                <button id="delete-category-1">
-                                    Delete
-                                </button>
-
+                                <button id="edit-category-1">Edit</button>
+                                <button id="delete-category-1">Delete</button>
                             </td>
-
                         </tr>
-
                         <tr id="category-row-2">
-
-                            <td id="category-id-2">
-                                C002
-                            </td>
-
-                            <td id="category-title-2">
-                                Database
-                            </td>
-
-                            <td id="category-desc-2">
-                                Database Management Books
-                            </td>
-
-                            <td id="book-count-2">
-                                23
-                            </td>
-
+                            <td id="category-id-2">C002</td>
+                            <td id="category-title-2">Database</td>
+                            <td id="category-desc-2">Database Management Books</td>
+                            <td id="book-count-2">23</td>
                             <td>
-
-                                <button id="edit-category-2">
-                                    Edit
-                                </button>
-
-                                <button id="delete-category-2">
-                                    Delete
-                                </button>
-
+                                <button id="edit-category-2">Edit</button>
+                                <button id="delete-category-2">Delete</button>
                             </td>
-
                         </tr>
-
                     </tbody>
-
                 </table>
-
             </section>
 
-            <!-- Pagination -->
-
             <section id="pagination-section">
-
-                <button id="previous-page">
-                    Previous
-                </button>
-
-                <span id="page-number">
-                    Page 1 of 2
-                </span>
-
-                <button id="next-page">
-                    Next
-                </button>
-
+                <button id="previous-page">Previous</button>
+                <span id="page-number">Page 1 of 2</span>
+                <button id="next-page">Next</button>
             </section>
 
         </div>
-
     </main>
 
 </div>

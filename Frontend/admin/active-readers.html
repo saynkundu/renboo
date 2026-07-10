@@ -4,280 +4,425 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Active Readers</title>
+    <style>
+        /* Modern Reset & Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* Layout Container */
+        #active-readers-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styling */
+        #sidebar {
+            width: 260px;
+            background-color: #1e293b;
+            color: #fff;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+        }
+
+        #logo-section {
+            padding-bottom: 24px;
+            border-bottom: 1px solid #334155;
+            margin-bottom: 20px;
+        }
+
+        #library-logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        #sidebar-menu {
+            flex: 1;
+        }
+
+        #menu-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        #menu-list li a {
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: block;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        #menu-list li a:hover {
+            background-color: #334155;
+            color: #fff;
+        }
+
+        /* Highlight Active Menu Item */
+        #menu-active-readers a {
+            background-color: #2563eb;
+            color: #fff;
+        }
+
+        /* Highlight Logout Separately */
+        #menu-logout a:hover {
+            background-color: #ef4444;
+            color: #fff;
+        }
+
+        /* Main Content Styling */
+        #main-content {
+            margin-left: 260px; /* Offset for fixed sidebar */
+            flex: 1;
+            padding: 40px;
+            background-color: #f8fafc;
+        }
+
+        #active-readers-page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        #page-header {
+            margin-bottom: 32px;
+        }
+
+        #page-title {
+            font-size: 1.85rem;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        #page-description {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* Controls: Search and Filters */
+        #reader-controls {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        #search-section {
+            flex: 1;
+        }
+
+        #search-member, #book-filter {
+            width: 100%;
+            padding: 10px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            color: #334155;
+            transition: border-color 0.2s;
+        }
+
+        #search-member:focus, #book-filter:focus {
+            border-color: #2563eb;
+        }
+
+        #filter-section {
+            width: 200px;
+        }
+
+        /* Table Styling */
+        #active-readers-table {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        #reader-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            border: none; /* Replaced your HTML inline border */
+        }
+
+        #reader-table th {
+            background-color: #f1f5f9;
+            color: #475569;
+            font-weight: 600;
+            padding: 16px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        #reader-table td {
+            padding: 16px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.95rem;
+            color: #334155;
+            vertical-align: middle;
+        }
+
+        #reader-table tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* Specific Cell Utilities */
+        [id^="user-id"] {
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        [id^="member-name"] {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        /* Status Badge Styling */
+        [id^="status"] {
+            display: inline-block;
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Action Buttons styling */
+        #reader-table td button {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid transparent;
+            margin-right: 6px;
+            transition: all 0.2s;
+        }
+
+        button[id^="view-reader"] {
+            background-color: #eff6ff;
+            color: #2563eb;
+        }
+
+        button[id^="view-reader"]:hover {
+            background-color: #2563eb;
+            color: #fff;
+        }
+
+        button[id^="revoke-access"] {
+            background-color: #fef2f2;
+            color: #dc2626;
+        }
+
+        button[id^="revoke-access"]:hover {
+            background-color: #dc2626;
+            color: #fff;
+        }
+
+        /* Pagination Section */
+        #pagination-section {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        #page-count {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        #previous-page, #next-page {
+            background-color: #fff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        #previous-page:hover, #next-page:hover {
+            background-color: #f1f5f9;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+
+        /* Responsive Breakpoint for Medium Screens */
+        @media(max-width: 992px) {
+            #active-readers-container {
+                flex-direction: column;
+            }
+            #sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+            }
+            #main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            #reader-controls {
+                flex-direction: column;
+            }
+            #filter-section {
+                width: 100%;
+            }
+            #active-readers-table {
+                overflow-x: auto;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <div id="active-readers-container">
 
-    <!-- Sidebar -->
-
     <aside id="sidebar">
-
         <div id="logo-section">
             <h2 id="library-logo">📚 Digital Library</h2>
         </div>
 
         <nav id="sidebar-menu">
-
             <ul id="menu-list">
-
                 <li id="menu-dashboard">
                     <a href="dashboard.html">Dashboard</a>
                 </li>
-
                 <li id="menu-book-catalog">
                     <a href="book-catalog.html">Book Catalog</a>
                 </li>
-
                 <li id="menu-access-requests">
                     <a href="access-requests.html">Access Requests</a>
                 </li>
-
                 <li id="menu-active-readers">
                     <a href="active-readers.html">Active Readers</a>
                 </li>
-
                 <li id="menu-members">
                     <a href="members.html">Members</a>
                 </li>
-
                 <li id="menu-categories">
                     <a href="categories.html">Categories</a>
                 </li>
-
                 <li id="menu-profile">
                     <a href="profile.html">Profile</a>
                 </li>
-
                 <li id="menu-logout">
                     <a href="../index.html">Logout</a>
                 </li>
-
             </ul>
-
         </nav>
-
     </aside>
 
-    <!-- Main Content -->
-
     <main id="main-content">
-
         <div id="active-readers-page">
 
-            <!-- Header -->
-
             <header id="page-header">
-
                 <div id="header-left">
-
-                    <h1 id="page-title">
-                        Active Readers
-                    </h1>
-
+                    <h1 id="page-title">Active Readers</h1>
                     <p id="page-description">
                         View members currently reading books with active subscriptions.
                     </p>
-
                 </div>
-
             </header>
 
-            <!-- Search & Filter -->
-
             <section id="reader-controls">
-
                 <div id="search-section">
-
-                    <input
-                        type="text"
-                        id="search-member"
-                        placeholder="Search Member">
-
+                    <input type="text" id="search-member" placeholder="Search Member">
                 </div>
 
                 <div id="filter-section">
-
                     <select id="book-filter">
-
-                        <option value="">
-                            All Books
-                        </option>
-
-                        <option value="programming">
-                            Programming
-                        </option>
-
-                        <option value="database">
-                            Database
-                        </option>
-
-                        <option value="networking">
-                            Networking
-                        </option>
-
+                        <option value="">All Books</option>
+                        <option value="programming">Programming</option>
+                        <option value="database">Database</option>
+                        <option value="networking">Networking</option>
                     </select>
-
                 </div>
-
             </section>
-
-            <!-- Active Readers Table -->
 
             <section id="active-readers-table">
-
-                <table id="reader-table" border="1">
-
+                <table id="reader-table">
                     <thead>
-
                         <tr>
-
                             <th>User ID</th>
-
                             <th>Member Name</th>
-
                             <th>Email</th>
-
                             <th>Book</th>
-
                             <th>Access Start</th>
-
                             <th>Expiry Date</th>
-
                             <th>Time Left</th>
-
                             <th>Status</th>
-
                             <th>Action</th>
-
                         </tr>
-
                     </thead>
-
                     <tbody>
-
                         <tr id="reader-row-1">
-
-                            <td id="user-id-1">
-                                U001
-                            </td>
-
-                            <td id="member-name-1">
-                                Rahul Sharma
-                            </td>
-
-                            <td id="member-email-1">
-                                rahul@gmail.com
-                            </td>
-
-                            <td id="book-name-1">
-                                Java Programming
-                            </td>
-
-                            <td id="access-date-1">
-                                10 Jul 2026
-                            </td>
-
-                            <td id="expiry-date-1">
-                                17 Jul 2026
-                            </td>
-
-                            <td id="remaining-time-1">
-                                6 Days
-                            </td>
-
-                            <td id="status-1">
-                                Active
-                            </td>
-
+                            <td id="user-id-1">U001</td>
+                            <td id="member-name-1">Rahul Sharma</td>
+                            <td id="member-email-1">rahul@gmail.com</td>
+                            <td id="book-name-1">Java Programming</td>
+                            <td id="access-date-1">10 Jul 2026</td>
+                            <td id="expiry-date-1">17 Jul 2026</td>
+                            <td id="remaining-time-1">6 Days</td>
+                            <td id="status-1">Active</td>
                             <td>
-
-                                <button id="view-reader-1">
-                                    View
-                                </button>
-
-                                <button id="revoke-access-1">
-                                    Revoke
-                                </button>
-
+                                <button id="view-reader-1">View</button>
+                                <button id="revoke-access-1">Revoke</button>
                             </td>
-
                         </tr>
-
                         <tr id="reader-row-2">
-
-                            <td id="user-id-2">
-                                U002
-                            </td>
-
-                            <td id="member-name-2">
-                                Priya Das
-                            </td>
-
-                            <td id="member-email-2">
-                                priya@gmail.com
-                            </td>
-
-                            <td id="book-name-2">
-                                Database Management System
-                            </td>
-
-                            <td id="access-date-2">
-                                08 Jul 2026
-                            </td>
-
-                            <td id="expiry-date-2">
-                                22 Jul 2026
-                            </td>
-
-                            <td id="remaining-time-2">
-                                12 Days
-                            </td>
-
-                            <td id="status-2">
-                                Active
-                            </td>
-
+                            <td id="user-id-2">U002</td>
+                            <td id="member-name-2">Priya Das</td>
+                            <td id="member-email-2">priya@gmail.com</td>
+                            <td id="book-name-2">Database Management System</td>
+                            <td id="access-date-2">08 Jul 2026</td>
+                            <td id="expiry-date-2">22 Jul 2026</td>
+                            <td id="remaining-time-2">12 Days</td>
+                            <td id="status-2">Active</td>
                             <td>
-
-                                <button id="view-reader-2">
-                                    View
-                                </button>
-
-                                <button id="revoke-access-2">
-                                    Revoke
-                                </button>
-
+                                <button id="view-reader-2">View</button>
+                                <button id="revoke-access-2">Revoke</button>
                             </td>
-
                         </tr>
-
                     </tbody>
-
                 </table>
-
             </section>
 
-            <!-- Pagination -->
-
             <section id="pagination-section">
-
-                <button id="previous-page">
-                    Previous
-                </button>
-
-                <span id="page-count">
-                    Page 1 of 3
-                </span>
-
-                <button id="next-page">
-                    Next
-                </button>
-
+                <button id="previous-page">Previous</button>
+                <span id="page-count">Page 1 of 3</span>
+                <button id="next-page">Next</button>
             </section>
 
         </div>
-
     </main>
 
 </div>
