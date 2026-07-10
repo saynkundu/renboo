@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Library Management System - Login</title>
+</head>
+<body>
+
+    <div id="login-container">
+
+        <!-- Left Section -->
+        <div id="left-section">
+
+            <div id="logo-container">
+                <img src="images/logo.png" alt="Library Logo" id="library-logo">
+            </div>
+
+            <h1 id="library-name">Digital Library</h1>
+
+            <p id="library-description">
+                Welcome to the Digital Library Management System.
+                Read books online, request access, and manage your reading anytime.
+            </p>
+
+        </div>
+
+        <!-- Right Section -->
+        <div id="right-section">
+
+            <div id="login-card">
+
+                <h2 id="login-title">Login</h2>
+
+                <p id="login-subtitle">
+                    Please sign in to continue
+                </p>
+
+                <form id="login-form">
+
+                    <!-- Email -->
+
+                    <div id="email-container">
+
+                        <label for="email" id="email-label">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+                    <!-- Password -->
+
+                    <div id="password-container">
+
+                        <label for="password" id="password-label">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                    </div>
+
+                    <!-- Login Role -->
+
+                    <div id="role-container">
+
+                        <label for="role" id="role-label">
+                            Login As
+                        </label>
+
+                        <select
+                            id="role"
+                            name="role"
+                            required
+                        >
+                            <option value="">Select Role</option>
+                            <option value="admin">Administrator</option>
+                            <option value="member">Member</option>
+                        </select>
+
+                    </div>
+
+                    <!-- Remember Me -->
+
+                    <div id="remember-container">
+
+                        <input
+                            type="checkbox"
+                            id="remember-me"
+                            name="remember-me"
+                        >
+
+                        <label for="remember-me">
+                            Remember Me
+                        </label>
+
+                    </div>
+
+                    <!-- Login Button -->
+
+                    <button
+                        type="submit"
+                        id="login-button"
+                    >
+                        Login
+                    </button>
+
+                </form>
+
+                <!-- Links -->
+
+                <div id="login-links">
+
+                    <a href="#" id="forgot-password-link">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
