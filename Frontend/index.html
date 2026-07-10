@@ -4,12 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Library Management System - Login</title>
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- Layout Container --- */
+        #login-container {
+            display: flex;
+            width: 100%;
+            max-width: 1000px;
+            min-height: 600px;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        /* --- Left Section (Branding) --- */
+        #left-section {
+            flex: 1;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ffffff;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #logo-container #library-logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        #library-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        #library-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 320px;
+            opacity: 0.9;
+        }
+
+        /* --- Right Section (Form) --- */
+        #right-section {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+        }
+
+        #login-card {
+            width: 100%;
+            max-width: 360px;
+        }
+
+        #login-title {
+            font-size: 2rem;
+            color: #222222;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        #login-subtitle {
+            font-size: 0.95rem;
+            color: #666666;
+            margin-bottom: 30px;
+        }
+
+        /* --- Form Elements --- */
+        #login-form > div {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #444444;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 0.95rem;
+            border: 1.5px solid #dcdcdc;
+            border-radius: 6px;
+            background-color: #fafafa;
+            color: #333333;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            border-color: #2a5298;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.15);
+        }
+
+        /* --- Button --- */
+        #login-button {
+            width: 100%;
+            padding: 14px;
+            background-color: #2a5298;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            margin-top: 10px;
+        }
+
+        #login-button:hover {
+            background-color: #1e3c72;
+        }
+
+        #login-button:active {
+            transform: scale(0.98);
+        }
+
+        /* --- Links --- */
+        #login-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #forgot-password-link {
+            font-size: 0.9rem;
+            color: #2a5298;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        #forgot-password-link:hover {
+            text-decoration: underline;
+            color: #1e3c72;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            #login-container {
+                flex-direction: column;
+                max-width: 450px;
+                min-height: auto;
+            }
+
+            #left-section {
+                padding: 40px 20px;
+            }
+
+            #right-section {
+                padding: 40px 30px;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <div id="login-container">
 
-        <!-- Left Section -->
         <div id="left-section">
 
             <div id="logo-container">
@@ -25,7 +211,6 @@
 
         </div>
 
-        <!-- Right Section -->
         <div id="right-section">
 
             <div id="login-card">
@@ -38,14 +223,10 @@
 
                 <form id="login-form">
 
-                    <!-- Email -->
-
                     <div id="email-container">
-
                         <label for="email" id="email-label">
                             Email Address
                         </label>
-
                         <input
                             type="email"
                             id="email"
@@ -53,17 +234,12 @@
                             placeholder="Enter your email"
                             required
                         >
-
                     </div>
 
-                    <!-- Password -->
-
                     <div id="password-container">
-
                         <label for="password" id="password-label">
                             Password
                         </label>
-
                         <input
                             type="password"
                             id="password"
@@ -71,17 +247,12 @@
                             placeholder="Enter your password"
                             required
                         >
-
                     </div>
 
-                    <!-- Login Role -->
-
                     <div id="role-container">
-
                         <label for="role" id="role-label">
                             Login As
                         </label>
-
                         <select
                             id="role"
                             name="role"
@@ -91,11 +262,7 @@
                             <option value="admin">Administrator</option>
                             <option value="member">Member</option>
                         </select>
-
                     </div>
-
-                    
-                    <!-- Login Button -->
 
                     <button
                         type="submit"
@@ -106,14 +273,10 @@
 
                 </form>
 
-                <!-- Links -->
-
                 <div id="login-links">
-
                     <a href="#" id="forgot-password-link">
                         Forgot Password?
                     </a>
-
                 </div>
 
             </div>

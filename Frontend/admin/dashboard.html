@@ -4,12 +4,279 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Digital Library</title>
+    <style>
+        /* ==========================================
+           1. Reset & Global Styles
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* ==========================================
+           2. Main Layout Container
+           ========================================== */
+        #dashboard-container {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            min-height: 100vh;
+        }
+
+        /* ==========================================
+           3. Sidebar Navigation
+           ========================================== */
+        #sidebar {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #logo-section {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #334155;
+            margin-bottom: 1.5rem;
+        }
+
+        #library-logo {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        #menu-list {
+            list-style: none;
+        }
+
+        #menu-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        #menu-list a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        #menu-list a:hover, 
+        #menu-dashboard a {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+
+        #menu-logout a {
+            margin-top: 2rem;
+            color: #ef4444;
+        }
+
+        #menu-logout a:hover {
+            background-color: #451a1a;
+            color: #fca5a5;
+        }
+
+        /* ==========================================
+           4. Main Content Area & Header
+           ========================================== */
+        #main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        #dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            background-color: #ffffff;
+            padding: 1.25rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        #dashboard-title {
+            font-size: 1.75rem;
+            color: #0f172a;
+        }
+
+        #dashboard-subtitle {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        #admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        #admin-image {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #e2e8f0;
+        }
+
+        #admin-name {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        /* ==========================================
+           5. Statistics / Metric Cards
+           ========================================== */
+        #statistics-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        #statistics-section > div {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #e2e8f0;
+        }
+
+        #statistics-section h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        #statistics-section p {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        #total-members-card { border-left-color: #3b82f6 !important; }
+        #pending-requests-card { border-left-color: #f59e0b !important; }
+        #active-readers-card { border-left-color: #10b981 !important; }
+
+        /* ==========================================
+           6. Sections & Tables
+           ========================================== */
+        #recent-activity, 
+        #pending-request-section {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2.5rem;
+        }
+
+        #recent-activity-title, 
+        #pending-request-title {
+            font-size: 1.25rem;
+            color: #1e293b;
+            margin-bottom: 1.25rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse !important;
+            border: none !important;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1rem !important;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: #475569;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        td {
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        /* ==========================================
+           7. Buttons and Status Pills
+           ========================================== */
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            font-size: 0.85rem;
+        }
+
+        [id^="approve-btn"] {
+            background-color: #10b981;
+            color: #ffffff;
+            margin-right: 0.5rem;
+        }
+
+        [id^="approve-btn"]:hover {
+            background-color: #059669;
+        }
+
+        [id^="reject-btn"] {
+            background-color: #ef4444;
+            color: #ffffff;
+        }
+
+        [id^="reject-btn"]:hover {
+            background-color: #dc2626;
+        }
+
+        .status-badge {
+            background-color: #d1fae5;
+            color: #065f46;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        /* ==========================================
+           8. Responsive Adjustments
+           ========================================== */
+        @media (max-width: 992px) {
+            #dashboard-container {
+                grid-template-columns: 1fr;
+            }
+            #sidebar {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <div id="dashboard-container">
 
-    <!-- Sidebar -->
     <aside id="sidebar">
 
         <div id="logo-section">
@@ -56,10 +323,8 @@
 
     </aside>
 
-    <!-- Main Content -->
     <main id="main-content">
 
-        <!-- Header -->
         <header id="dashboard-header">
 
             <div id="welcome-section">
@@ -70,7 +335,7 @@
             </div>
 
             <div id="admin-profile">
-                <img src="../images/admin-avatar.png"
+                <img src="https://via.placeholder.com/45"
                      alt="Admin"
                      id="admin-image">
 
@@ -81,7 +346,6 @@
 
         </header>
 
-        <!-- Statistics -->
         <section id="statistics-section">
 
             <div id="total-members-card">
@@ -101,7 +365,6 @@
 
         </section>
 
-        <!-- Recent Book Access -->
         <section id="recent-activity">
 
             <h2 id="recent-activity-title">
@@ -131,7 +394,7 @@
                         <td>10 Jul 2026</td>
                         <td>17 Jul 2026</td>
                         <td>7 Days</td>
-                        <td>Active</td>
+                        <td><span class="status-badge">Active</span></td>
                     </tr>
 
                     <tr>
@@ -140,7 +403,7 @@
                         <td>09 Jul 2026</td>
                         <td>16 Jul 2026</td>
                         <td>6 Days</td>
-                        <td>Active</td>
+                        <td><span class="status-badge">Active</span></td>
                     </tr>
 
                     <tr>
@@ -149,7 +412,7 @@
                         <td>08 Jul 2026</td>
                         <td>15 Jul 2026</td>
                         <td>5 Days</td>
-                        <td>Active</td>
+                        <td><span class="status-badge">Active</span></td>
                     </tr>
 
                     <tr>
@@ -158,7 +421,7 @@
                         <td>07 Jul 2026</td>
                         <td>14 Jul 2026</td>
                         <td>4 Days</td>
-                        <td>Active</td>
+                        <td><span class="status-badge">Active</span></td>
                     </tr>
 
                     <tr>
@@ -167,7 +430,7 @@
                         <td>06 Jul 2026</td>
                         <td>13 Jul 2026</td>
                         <td>3 Days</td>
-                        <td>Active</td>
+                        <td><span class="status-badge">Active</span></td>
                     </tr>
 
                     <tr>
@@ -176,7 +439,7 @@
                         <td>05 Jul 2026</td>
                         <td>12 Jul 2026</td>
                         <td>2 Days</td>
-                        <td>Active</td>
+                        <td><span class="status-badge">Active</span></td>
                     </tr>
 
                     <tr>
@@ -185,7 +448,7 @@
                         <td>04 Jul 2026</td>
                         <td>11 Jul 2026</td>
                         <td>1 Day</td>
-                        <td>Active</td>
+                        <td><span class="status-badge">Active</span></td>
                     </tr>
 
                 </tbody>
@@ -194,7 +457,6 @@
 
         </section>
 
-        <!-- Pending Requests -->
         <section id="pending-request-section">
 
             <h2 id="pending-request-title">

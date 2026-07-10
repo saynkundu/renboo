@@ -3,14 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Members</title>
+    <title>Members - Digital Library</title>
+    <style>
+        /* Modern Reset & Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        /* Layout Container */
+        #members-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styling */
+        #sidebar {
+            width: 260px;
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        #library-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            padding-left: 12px;
+        }
+
+        #menu-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        #menu-list li a {
+            display: block;
+            color: #94a3b8;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        #menu-list li a:hover {
+            background-color: #1e293b;
+            color: #ffffff;
+        }
+
+        /* Highlighting the active 'Members' page */
+        #menu-members a {
+            background-color: #2563eb;
+            color: #ffffff !important;
+        }
+
+        #menu-logout {
+            margin-top: auto;
+        }
+
+        #menu-logout a:hover {
+            background-color: #ef4444 !important;
+            color: #ffffff !important;
+        }
+
+        /* Main Content Styling */
+        #main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        #members-page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        #page-header {
+            margin-bottom: 32px;
+        }
+
+        #page-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+
+        #page-description {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* Search & Filter Controls */
+        #member-controls {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        #search-member, #member-status-filter {
+            padding: 10px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+            color: #1e293b;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        #search-member {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        #search-member:focus, #member-status-filter:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        /* Table Styling */
+        #member-table-section {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        #member-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: none !important; /* Overriding inline HTML border attributes */
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        #member-table th {
+            background-color: #f8fafc;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            padding: 16px 24px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        #member-table td {
+            padding: 16px 24px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #334155;
+            vertical-align: middle;
+        }
+
+        #member-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        #member-table tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        /* Action Buttons */
+        #member-table button {
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+            margin-right: 6px;
+        }
+
+        [id^="view-member-"] {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        [id^="view-member-"]:hover {
+            background-color: #dbeafe;
+        }
+
+        [id^="block-member-"] {
+            background-color: #fef2f2;
+            color: #b91c1c;
+        }
+
+        [id^="block-member-"]:hover {
+            background-color: #fee2e2;
+        }
+
+        /* Pagination Styling */
+        #pagination {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        #page-number {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        #previous-page, #next-page {
+            padding: 8px 14px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #previous-page:hover, #next-page:hover {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+        }
+    </style>
 </head>
 
 <body>
 
 <div id="members-container">
-
-    <!-- Sidebar -->
 
     <aside id="sidebar">
 
@@ -19,240 +255,111 @@
         </div>
 
         <nav id="sidebar-menu">
-
             <ul id="menu-list">
-
                 <li id="menu-dashboard">
                     <a href="dashboard.html">Dashboard</a>
                 </li>
-
                 <li id="menu-book-catalog">
                     <a href="book-catalog.html">Book Catalog</a>
                 </li>
-
                 <li id="menu-access-requests">
                     <a href="access-requests.html">Access Requests</a>
                 </li>
-
                 <li id="menu-active-readers">
                     <a href="active-readers.html">Active Readers</a>
                 </li>
-
                 <li id="menu-members">
                     <a href="members.html">Members</a>
                 </li>
-
                 <li id="menu-categories">
                     <a href="categories.html">Categories</a>
                 </li>
-
                 <li id="menu-profile">
                     <a href="profile.html">Profile</a>
                 </li>
-
                 <li id="menu-logout">
                     <a href="../index.html">Logout</a>
                 </li>
-
             </ul>
-
         </nav>
 
     </aside>
-
-    <!-- Main Content -->
 
     <main id="main-content">
 
         <div id="members-page">
 
-            <!-- Header -->
-
             <header id="page-header">
-
                 <div id="header-left">
-
-                    <h1 id="page-title">
-                        Members
-                    </h1>
-
+                    <h1 id="page-title">Members</h1>
                     <p id="page-description">
                         View and manage all registered library members.
                     </p>
-
                 </div>
-
             </header>
 
-            <!-- Search & Filter -->
-
             <section id="member-controls">
-
                 <input
                     type="text"
                     id="search-member"
                     placeholder="Search by Name or Email">
 
                 <select id="member-status-filter">
-
-                    <option value="">
-                        All Members
-                    </option>
-
-                    <option value="active">
-                        Active
-                    </option>
-
-                    <option value="blocked">
-                        Blocked
-                    </option>
-
+                    <option value="">All Members</option>
+                    <option value="active">Active</option>
+                    <option value="blocked">Blocked</option>
                 </select>
-
             </section>
-
-            <!-- Members Table -->
 
             <section id="member-table-section">
-
                 <table id="member-table" border="1">
-
                     <thead>
-
                         <tr>
-
                             <th>ID</th>
-
                             <th>Name</th>
-
                             <th>Email</th>
-
                             <th>Phone</th>
-
                             <th>Joined On</th>
-
                             <th>Books Reading</th>
-
                             <th>Status</th>
-
                             <th>Action</th>
-
                         </tr>
-
                     </thead>
-
                     <tbody>
-
                         <tr id="member-row-1">
-
-                            <td id="member-id-1">
-                                M001
-                            </td>
-
-                            <td id="member-name-1">
-                                Rahul Sharma
-                            </td>
-
-                            <td id="member-email-1">
-                                rahul@gmail.com
-                            </td>
-
-                            <td id="member-phone-1">
-                                9876543210
-                            </td>
-
-                            <td id="joined-date-1">
-                                15 Jan 2026
-                            </td>
-
-                            <td id="reading-count-1">
-                                2
-                            </td>
-
-                            <td id="member-status-1">
-                                Active
-                            </td>
-
+                            <td id="member-id-1">M001</td>
+                            <td id="member-name-1">Rahul Sharma</td>
+                            <td id="member-email-1">rahul@gmail.com</td>
+                            <td id="member-phone-1">9876543210</td>
+                            <td id="joined-date-1">15 Jan 2026</td>
+                            <td id="reading-count-1">2</td>
+                            <td id="member-status-1">Active</td>
                             <td>
-
-                                <button id="view-member-1">
-                                    View
-                                </button>
-
-                                <button id="block-member-1">
-                                    Block
-                                </button>
-
+                                <button id="view-member-1">View</button>
+                                <button id="block-member-1">Block</button>
                             </td>
-
                         </tr>
-
                         <tr id="member-row-2">
-
-                            <td id="member-id-2">
-                                M002
-                            </td>
-
-                            <td id="member-name-2">
-                                Priya Das
-                            </td>
-
-                            <td id="member-email-2">
-                                priya@gmail.com
-                            </td>
-
-                            <td id="member-phone-2">
-                                9123456780
-                            </td>
-
-                            <td id="joined-date-2">
-                                20 Feb 2026
-                            </td>
-
-                            <td id="reading-count-2">
-                                1
-                            </td>
-
-                            <td id="member-status-2">
-                                Active
-                            </td>
-
+                            <td id="member-id-2">M002</td>
+                            <td id="member-name-2">Priya Das</td>
+                            <td id="member-email-2">priya@gmail.com</td>
+                            <td id="member-phone-2">9123456780</td>
+                            <td id="joined-date-2">20 Feb 2026</td>
+                            <td id="reading-count-2">1</td>
+                            <td id="member-status-2">Active</td>
                             <td>
-
-                                <button id="view-member-2">
-                                    View
-                                </button>
-
-                                <button id="block-member-2">
-                                    Block
-                                </button>
-
+                                <button id="view-member-2">View</button>
+                                <button id="block-member-2">Block</button>
                             </td>
-
                         </tr>
-
                     </tbody>
-
                 </table>
-
             </section>
 
-            <!-- Pagination -->
-
             <section id="pagination">
-
-                <button id="previous-page">
-                    Previous
-                </button>
-
-                <span id="page-number">
-                    Page 1 of 4
-                </span>
-
-                <button id="next-page">
-                    Next
-                </button>
-
+                <button id="previous-page">Previous</button>
+                <span id="page-number">Page 1 of 4</span>
+                <button id="next-page">Next</button>
             </section>
 
         </div>
