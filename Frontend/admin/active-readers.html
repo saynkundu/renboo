@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Readers</title>
+</head>
+<body>
+
+<div id="active-readers-page">
+
+    <!-- Header -->
+
+    <header id="page-header">
+
+        <div id="header-left">
+
+            <h1 id="page-title">
+                Active Readers
+            </h1>
+
+            <p id="page-description">
+                View members currently reading books with active subscriptions.
+            </p>
+
+        </div>
+
+    </header>
+
+    <!-- Search & Filter -->
+
+    <section id="reader-controls">
+
+        <div id="search-section">
+
+            <input
+                type="text"
+                id="search-member"
+                placeholder="Search Member">
+
+        </div>
+
+        <div id="filter-section">
+
+            <select id="book-filter">
+
+                <option value="">
+                    All Books
+                </option>
+
+                <option value="programming">
+                    Programming
+                </option>
+
+                <option value="database">
+                    Database
+                </option>
+
+                <option value="networking">
+                    Networking
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+    <!-- Active Readers Table -->
+
+    <section id="active-readers-table">
+
+        <table id="reader-table" border="1">
+
+            <thead>
+
+                <tr>
+
+                    <th>User ID</th>
+
+                    <th>Member Name</th>
+
+                    <th>Email</th>
+
+                    <th>Book</th>
+
+                    <th>Access Start</th>
+
+                    <th>Expiry Date</th>
+
+                    <th>Time Left</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr id="reader-row-1">
+
+                    <td id="user-id-1">
+                        U001
+                    </td>
+
+                    <td id="member-name-1">
+                        Rahul Sharma
+                    </td>
+
+                    <td id="member-email-1">
+                        rahul@gmail.com
+                    </td>
+
+                    <td id="book-name-1">
+                        Java Programming
+                    </td>
+
+                    <td id="access-date-1">
+                        10 Jul 2026
+                    </td>
+
+                    <td id="expiry-date-1">
+                        17 Jul 2026
+                    </td>
+
+                    <td id="remaining-time-1">
+                        6 Days
+                    </td>
+
+                    <td id="status-1">
+                        Active
+                    </td>
+
+                    <td>
+
+                        <button id="view-reader-1">
+
+                            View
+
+                        </button>
+
+                        <button id="revoke-access-1">
+
+                            Revoke
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                <tr id="reader-row-2">
+
+                    <td id="user-id-2">
+                        U002
+                    </td>
+
+                    <td id="member-name-2">
+                        Priya Das
+                    </td>
+
+                    <td id="member-email-2">
+                        priya@gmail.com
+                    </td>
+
+                    <td id="book-name-2">
+                        Database Management System
+                    </td>
+
+                    <td id="access-date-2">
+                        08 Jul 2026
+                    </td>
+
+                    <td id="expiry-date-2">
+                        22 Jul 2026
+                    </td>
+
+                    <td id="remaining-time-2">
+                        12 Days
+                    </td>
+
+                    <td id="status-2">
+                        Active
+                    </td>
+
+                    <td>
+
+                        <button id="view-reader-2">
+
+                            View
+
+                        </button>
+
+                        <button id="revoke-access-2">
+
+                            Revoke
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- Pagination -->
+
+    <section id="pagination-section">
+
+        <button id="previous-page">
+
+            Previous
+
+        </button>
+
+        <span id="page-count">
+
+            Page 1 of 3
+
+        </span>
+
+        <button id="next-page">
+
+            Next
+
+        </button>
+
+    </section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Categories</title>
+</head>
+<body>
+
+<div id="categories-page">
+
+    <!-- Header -->
+
+    <header id="page-header">
+
+        <h1 id="page-title">
+            Book Categories
+        </h1>
+
+        <p id="page-description">
+            Manage all book categories available in the digital library.
+        </p>
+
+    </header>
+
+    <!-- Add Category -->
+
+    <section id="add-category-section">
+
+        <h2 id="add-category-title">
+            Add New Category
+        </h2>
+
+        <form id="category-form">
+
+            <input
+                type="text"
+                id="category-name"
+                name="categoryName"
+                placeholder="Category Name"
+                required>
+
+            <textarea
+                id="category-description"
+                name="categoryDescription"
+                placeholder="Category Description"
+                rows="3">
+            </textarea>
+
+            <button
+                type="submit"
+                id="add-category-btn">
+                Add Category
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Search -->
+
+    <section id="search-section">
+
+        <input
+            type="text"
+            id="search-category"
+            placeholder="Search Category">
+
+    </section>
+
+    <!-- Category Table -->
+
+    <section id="category-table-section">
+
+        <table id="category-table" border="1">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Category Name</th>
+
+                    <th>Description</th>
+
+                    <th>Total Books</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr id="category-row-1">
+
+                    <td id="category-id-1">
+                        C001
+                    </td>
+
+                    <td id="category-title-1">
+                        Programming
+                    </td>
+
+                    <td id="category-desc-1">
+                        Programming related books
+                    </td>
+
+                    <td id="book-count-1">
+                        54
+                    </td>
+
+                    <td>
+
+                        <button id="edit-category-1">
+                            Edit
+                        </button>
+
+                        <button id="delete-category-1">
+                            Delete
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                <tr id="category-row-2">
+
+                    <td id="category-id-2">
+                        C002
+                    </td>
+
+                    <td id="category-title-2">
+                        Database
+                    </td>
+
+                    <td id="category-desc-2">
+                        Database Management Books
+                    </td>
+
+                    <td id="book-count-2">
+                        23
+                    </td>
+
+                    <td>
+
+                        <button id="edit-category-2">
+                            Edit
+                        </button>
+
+                        <button id="delete-category-2">
+                            Delete
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- Pagination -->
+
+    <section id="pagination-section">
+
+        <button id="previous-page">
+            Previous
+        </button>
+
+        <span id="page-number">
+            Page 1 of 2
+        </span>
+
+        <button id="next-page">
+            Next
+        </button>
+
+    </section>
+
+</div>
+
+</body>
+</html>

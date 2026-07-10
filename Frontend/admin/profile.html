@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile</title>
+</head>
+<body>
+
+<div id="profile-page">
+
+    <!-- Page Header -->
+
+    <header id="profile-header">
+
+        <h1 id="profile-title">
+            Admin Profile
+        </h1>
+
+        <p id="profile-description">
+            View and update your profile information.
+        </p>
+
+    </header>
+
+    <!-- Profile Picture -->
+
+    <section id="profile-picture-section">
+
+        <img
+            id="profile-image"
+            src="../images/admin.png"
+            alt="Admin Profile">
+
+        <br>
+
+        <input
+            type="file"
+            id="upload-profile-image"
+            accept="image/*">
+
+    </section>
+
+    <!-- Profile Information -->
+
+    <section id="profile-information">
+
+        <form id="profile-form">
+
+            <label for="admin-name">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="admin-name"
+                name="adminName"
+                placeholder="Enter Full Name">
+
+            <br><br>
+
+            <label for="admin-email">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="admin-email"
+                name="adminEmail"
+                placeholder="Enter Email">
+
+            <br><br>
+
+            <label for="admin-phone">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="admin-phone"
+                name="adminPhone"
+                placeholder="Enter Phone Number">
+
+            <br><br>
+
+            <button
+                type="submit"
+                id="update-profile-btn">
+
+                Update Profile
+
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Change Password -->
+
+    <section id="password-section">
+
+        <h2 id="password-title">
+            Change Password
+        </h2>
+
+        <form id="password-form">
+
+            <label for="current-password">
+                Current Password
+            </label>
+
+            <input
+                type="password"
+                id="current-password"
+                name="currentPassword">
+
+            <br><br>
+
+            <label for="new-password">
+                New Password
+            </label>
+
+            <input
+                type="password"
+                id="new-password"
+                name="newPassword">
+
+            <br><br>
+
+            <label for="confirm-password">
+                Confirm Password
+            </label>
+
+            <input
+                type="password"
+                id="confirm-password"
+                name="confirmPassword">
+
+            <br><br>
+
+            <button
+                type="submit"
+                id="change-password-btn">
+
+                Change Password
+
+            </button>
+
+        </form>
+
+    </section>
+
+    <!-- Logout -->
+
+    <section id="logout-section">
+
+        <button id="logout-btn">
+
+            Logout
+
+        </button>
+
+    </section>
+
+</div>
+
+</body>
+</html>

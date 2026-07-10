@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Requests</title>
+</head>
+
+<body>
+
+<div id="access-request-page">
+
+    <!-- Page Header -->
+
+    <header id="request-header">
+
+        <div id="header-left">
+
+            <h1 id="page-title">
+                Access Requests
+            </h1>
+
+            <p id="page-description">
+                Review member requests and grant or deny access to digital books.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- Search & Filter -->
+
+    <section id="request-controls">
+
+        <div id="search-container">
+
+            <input
+                type="text"
+                id="search-user"
+                placeholder="Search by Member Name">
+
+        </div>
+
+        <div id="filter-container">
+
+            <select id="status-filter">
+
+                <option value="">
+                    All Requests
+                </option>
+
+                <option value="pending">
+                    Pending
+                </option>
+
+                <option value="approved">
+                    Approved
+                </option>
+
+                <option value="rejected">
+                    Rejected
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <!-- Pending Requests -->
+
+    <section id="request-list">
+
+
+        <!-- Request Card -->
+
+        <div class="request-card" id="request-card-1">
+
+            <div class="member-info">
+
+                <h2 id="member-name-1">
+                    Rahul Sharma
+                </h2>
+
+                <p id="member-email-1">
+                    rahul@gmail.com
+                </p>
+
+            </div>
+
+            <div class="book-info">
+
+                <p id="book-title-1">
+                    Book :
+                    Java Programming
+                </p>
+
+                <p id="book-category-1">
+                    Category :
+                    Programming
+                </p>
+
+                <p id="requested-date-1">
+                    Requested On :
+                    10 July 2026
+                </p>
+
+                <p id="subscription-days-1">
+                    Requested Access :
+                    7 Days
+                </p>
+
+            </div>
+
+            <div class="request-message">
+
+                <label for="message-1">
+                    Member Message
+                </label>
+
+                <textarea
+                    id="message-1"
+                    rows="3"
+                    readonly>
+
+Need this book for semester preparation.
+
+                </textarea>
+
+            </div>
+
+            <div class="request-actions">
+
+                <button id="approve-btn-1">
+
+                    Approve
+
+                </button>
+
+                <button id="reject-btn-1">
+
+                    Reject
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Second Card -->
+
+        <div class="request-card" id="request-card-2">
+
+            <div class="member-info">
+
+                <h2 id="member-name-2">
+                    Priya Das
+                </h2>
+
+                <p id="member-email-2">
+                    priya@gmail.com
+                </p>
+
+            </div>
+
+            <div class="book-info">
+
+                <p id="book-title-2">
+                    Book :
+                    Database Management System
+                </p>
+
+                <p id="book-category-2">
+                    Category :
+                    Database
+                </p>
+
+                <p id="requested-date-2">
+                    Requested On :
+                    9 July 2026
+                </p>
+
+                <p id="subscription-days-2">
+                    Requested Access :
+                    15 Days
+                </p>
+
+            </div>
+
+            <div class="request-message">
+
+                <label for="message-2">
+
+                    Member Message
+
+                </label>
+
+                <textarea
+                    id="message-2"
+                    rows="3"
+                    readonly>
+
+Need this book for project work.
+
+                </textarea>
+
+            </div>
+
+            <div class="request-actions">
+
+                <button id="approve-btn-2">
+
+                    Approve
+
+                </button>
+
+                <button id="reject-btn-2">
+
+                    Reject
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Pagination -->
+
+    <section id="pagination">
+
+        <button id="previous-page">
+
+            Previous
+
+        </button>
+
+        <span id="page-number">
+
+            Page 1 of 5
+
+        </span>
+
+        <button id="next-page">
+
+            Next
+
+        </button>
+
+    </section>
+
+</div>
+
+</body>
+
+</html>

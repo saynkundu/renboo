@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members</title>
+</head>
+
+<body>
+
+<div id="members-page">
+
+    <!-- Header -->
+
+    <header id="page-header">
+
+        <div id="header-left">
+
+            <h1 id="page-title">
+                Members
+            </h1>
+
+            <p id="page-description">
+                View and manage all registered library members.
+            </p>
+
+        </div>
+
+    </header>
+
+    <!-- Search & Filter -->
+
+    <section id="member-controls">
+
+        <input
+            type="text"
+            id="search-member"
+            placeholder="Search by Name or Email">
+
+        <select id="member-status-filter">
+
+            <option value="">
+                All Members
+            </option>
+
+            <option value="active">
+                Active
+            </option>
+
+            <option value="blocked">
+                Blocked
+            </option>
+
+        </select>
+
+    </section>
+
+    <!-- Members Table -->
+
+    <section id="member-table-section">
+
+        <table id="member-table" border="1">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Name</th>
+
+                    <th>Email</th>
+
+                    <th>Phone</th>
+
+                    <th>Joined On</th>
+
+                    <th>Books Reading</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr id="member-row-1">
+
+                    <td id="member-id-1">
+                        M001
+                    </td>
+
+                    <td id="member-name-1">
+                        Rahul Sharma
+                    </td>
+
+                    <td id="member-email-1">
+                        rahul@gmail.com
+                    </td>
+
+                    <td id="member-phone-1">
+                        9876543210
+                    </td>
+
+                    <td id="joined-date-1">
+                        15 Jan 2026
+                    </td>
+
+                    <td id="reading-count-1">
+                        2
+                    </td>
+
+                    <td id="member-status-1">
+                        Active
+                    </td>
+
+                    <td>
+
+                        <button id="view-member-1">
+
+                            View
+
+                        </button>
+
+                        <button id="block-member-1">
+
+                            Block
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                <tr id="member-row-2">
+
+                    <td id="member-id-2">
+                        M002
+                    </td>
+
+                    <td id="member-name-2">
+                        Priya Das
+                    </td>
+
+                    <td id="member-email-2">
+                        priya@gmail.com
+                    </td>
+
+                    <td id="member-phone-2">
+                        9123456780
+                    </td>
+
+                    <td id="joined-date-2">
+                        20 Feb 2026
+                    </td>
+
+                    <td id="reading-count-2">
+                        1
+                    </td>
+
+                    <td id="member-status-2">
+                        Active
+                    </td>
+
+                    <td>
+
+                        <button id="view-member-2">
+
+                            View
+
+                        </button>
+
+                        <button id="block-member-2">
+
+                            Block
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- Pagination -->
+
+    <section id="pagination">
+
+        <button id="previous-page">
+            Previous
+        </button>
+
+        <span id="page-number">
+            Page 1 of 4
+        </span>
+
+        <button id="next-page">
+            Next
+        </button>
+
+    </section>
+
+</div>
+
+</body>
+</html>
