@@ -7,224 +7,292 @@
 </head>
 <body>
 
-<div id="book-catalog-page">
+<div id="book-catalog-container">
 
-    <!-- Header -->
-    <header id="catalog-header">
+    <!-- Sidebar -->
 
-        <div id="header-left">
-            <h1 id="catalog-title">Book Catalog</h1>
-            <p id="catalog-subtitle">
-                Manage all digital books available in the library.
-            </p>
+    <aside id="sidebar">
+
+        <div id="logo-section">
+            <h2 id="library-logo">📚 Digital Library</h2>
         </div>
 
-        <div id="header-right">
-            <button id="add-book-btn">
-                + Add New Book
-            </button>
+        <nav id="sidebar-menu">
+
+            <ul id="menu-list">
+
+                <li id="menu-dashboard">
+                    <a href="dashboard.html">Dashboard</a>
+                </li>
+
+                <li id="menu-book-catalog">
+                    <a href="book-catalog.html">Book Catalog</a>
+                </li>
+
+                <li id="menu-access-requests">
+                    <a href="access-requests.html">Access Requests</a>
+                </li>
+
+                <li id="menu-active-readers">
+                    <a href="active-readers.html">Active Readers</a>
+                </li>
+
+                <li id="menu-members">
+                    <a href="members.html">Members</a>
+                </li>
+
+                <li id="menu-categories">
+                    <a href="categories.html">Categories</a>
+                </li>
+
+                <li id="menu-profile">
+                    <a href="profile.html">Profile</a>
+                </li>
+
+                <li id="menu-logout">
+                    <a href="../index.html">Logout</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main id="main-content">
+
+        <div id="book-catalog-page">
+
+            <!-- Header -->
+
+            <header id="catalog-header">
+
+                <div id="header-left">
+
+                    <h1 id="catalog-title">
+                        Book Catalog
+                    </h1>
+
+                    <p id="catalog-subtitle">
+                        Manage all digital books available in the library.
+                    </p>
+
+                </div>
+
+                <div id="header-right">
+
+                    <button id="add-book-btn">
+                        + Add New Book
+                    </button>
+
+                </div>
+
+            </header>
+
+            <!-- Search & Filter -->
+
+            <section id="catalog-controls">
+
+                <div id="search-section">
+
+                    <input
+                        type="text"
+                        id="search-book"
+                        placeholder="Search by title, author or ISBN">
+
+                </div>
+
+                <div id="filter-section">
+
+                    <select id="category-filter">
+
+                        <option value="">All Categories</option>
+
+                        <option value="programming">
+                            Programming
+                        </option>
+
+                        <option value="database">
+                            Database
+                        </option>
+
+                        <option value="networking">
+                            Networking
+                        </option>
+
+                        <option value="ai">
+                            Artificial Intelligence
+                        </option>
+
+                        <option value="math">
+                            Mathematics
+                        </option>
+
+                    </select>
+
+                    <select id="availability-filter">
+
+                        <option value="">
+                            Availability
+                        </option>
+
+                        <option value="available">
+                            Available
+                        </option>
+
+                        <option value="restricted">
+                            Restricted
+                        </option>
+
+                    </select>
+
+                    <button id="search-btn">
+                        Search
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- Books Grid -->
+
+            <section id="books-container">
+
+                <!-- Book Card 1 -->
+
+                <div class="book-card" id="book-card-1">
+
+                    <div class="book-cover">
+
+                        <img
+                            id="book-image-1"
+                            src="../images/java.jpg"
+                            alt="Book Cover">
+
+                    </div>
+
+                    <div class="book-details">
+
+                        <h2 id="book-title-1">
+                            Java Programming
+                        </h2>
+
+                        <p id="book-author-1">
+                            Author : Herbert Schildt
+                        </p>
+
+                        <p id="book-category-1">
+                            Category : Programming
+                        </p>
+
+                        <p id="book-isbn-1">
+                            ISBN : 9781234567890
+                        </p>
+
+                        <p id="book-status-1">
+                            Status : Available
+                        </p>
+
+                    </div>
+
+                    <div class="book-actions">
+
+                        <button id="view-book-1">
+                            View
+                        </button>
+
+                        <button id="edit-book-1">
+                            Edit
+                        </button>
+
+                        <button id="delete-book-1">
+                            Delete
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Book Card 2 -->
+
+                <div class="book-card" id="book-card-2">
+
+                    <div class="book-cover">
+
+                        <img
+                            id="book-image-2"
+                            src="../images/dbms.jpg"
+                            alt="Book Cover">
+
+                    </div>
+
+                    <div class="book-details">
+
+                        <h2 id="book-title-2">
+                            Database Management System
+                        </h2>
+
+                        <p id="book-author-2">
+                            Author : Korth
+                        </p>
+
+                        <p id="book-category-2">
+                            Category : Database
+                        </p>
+
+                        <p id="book-isbn-2">
+                            ISBN : 9789876543210
+                        </p>
+
+                        <p id="book-status-2">
+                            Status : Available
+                        </p>
+
+                    </div>
+
+                    <div class="book-actions">
+
+                        <button id="view-book-2">
+                            View
+                        </button>
+
+                        <button id="edit-book-2">
+                            Edit
+                        </button>
+
+                        <button id="delete-book-2">
+                            Delete
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Pagination -->
+
+            <section id="pagination-section">
+
+                <button id="previous-page">
+                    Previous
+                </button>
+
+                <span id="page-number">
+                    Page 1 of 10
+                </span>
+
+                <button id="next-page">
+                    Next
+                </button>
+
+            </section>
+
         </div>
 
-    </header>
-
-    <!-- Search & Filter -->
-
-    <section id="catalog-controls">
-
-        <div id="search-section">
-
-            <input
-                type="text"
-                id="search-book"
-                placeholder="Search by title, author or ISBN">
-
-        </div>
-
-        <div id="filter-section">
-
-            <select id="category-filter">
-
-                <option value="">All Categories</option>
-
-                <option value="programming">
-                    Programming
-                </option>
-
-                <option value="database">
-                    Database
-                </option>
-
-                <option value="networking">
-                    Networking
-                </option>
-
-                <option value="ai">
-                    Artificial Intelligence
-                </option>
-
-                <option value="math">
-                    Mathematics
-                </option>
-
-            </select>
-
-            <select id="availability-filter">
-
-                <option value="">
-                    Availability
-                </option>
-
-                <option value="available">
-                    Available
-                </option>
-
-                <option value="restricted">
-                    Restricted
-                </option>
-
-            </select>
-
-            <button id="search-btn">
-                Search
-            </button>
-
-        </div>
-
-    </section>
-
-    <!-- Books Grid -->
-
-    <section id="books-container">
-
-        <!-- Book Card -->
-
-        <div class="book-card" id="book-card-1">
-
-            <div class="book-cover">
-
-                <img
-                    id="book-image-1"
-                    src="images/java.jpg"
-                    alt="Book Cover">
-
-            </div>
-
-            <div class="book-details">
-
-                <h2 id="book-title-1">
-                    Java Programming
-                </h2>
-
-                <p id="book-author-1">
-                    Author : Herbert Schildt
-                </p>
-
-                <p id="book-category-1">
-                    Category : Programming
-                </p>
-
-                <p id="book-isbn-1">
-                    ISBN : 9781234567890
-                </p>
-
-                <p id="book-status-1">
-                    Status : Available
-                </p>
-
-            </div>
-
-            <div class="book-actions">
-
-                <button id="view-book-1">
-                    View
-                </button>
-
-                <button id="edit-book-1">
-                    Edit
-                </button>
-
-                <button id="delete-book-1">
-                    Delete
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- Book Card -->
-
-        <div class="book-card" id="book-card-2">
-
-            <div class="book-cover">
-
-                <img
-                    id="book-image-2"
-                    src="images/dbms.jpg"
-                    alt="Book Cover">
-
-            </div>
-
-            <div class="book-details">
-
-                <h2 id="book-title-2">
-                    Database Management System
-                </h2>
-
-                <p id="book-author-2">
-                    Author : Korth
-                </p>
-
-                <p id="book-category-2">
-                    Category : Database
-                </p>
-
-                <p id="book-isbn-2">
-                    ISBN : 9789876543210
-                </p>
-
-                <p id="book-status-2">
-                    Status : Available
-                </p>
-
-            </div>
-
-            <div class="book-actions">
-
-                <button id="view-book-2">
-                    View
-                </button>
-
-                <button id="edit-book-2">
-                    Edit
-                </button>
-
-                <button id="delete-book-2">
-                    Delete
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- Pagination -->
-
-    <section id="pagination-section">
-
-        <button id="previous-page">
-            Previous
-        </button>
-
-        <span id="page-number">
-            Page 1 of 10
-        </span>
-
-        <button id="next-page">
-            Next
-        </button>
-
-    </section>
+    </main>
 
 </div>
 

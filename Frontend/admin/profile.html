@@ -7,160 +7,224 @@
 </head>
 <body>
 
-<div id="profile-page">
+<div id="profile-container">
 
-    <!-- Page Header -->
+    <!-- Sidebar -->
 
-    <header id="profile-header">
+    <aside id="sidebar">
 
-        <h1 id="profile-title">
-            Admin Profile
-        </h1>
+        <div id="logo-section">
+            <h2 id="library-logo">📚 Digital Library</h2>
+        </div>
 
-        <p id="profile-description">
-            View and update your profile information.
-        </p>
+        <nav id="sidebar-menu">
 
-    </header>
+            <ul id="menu-list">
 
-    <!-- Profile Picture -->
+                <li id="menu-dashboard">
+                    <a href="dashboard.html">Dashboard</a>
+                </li>
 
-    <section id="profile-picture-section">
+                <li id="menu-book-catalog">
+                    <a href="book-catalog.html">Book Catalog</a>
+                </li>
 
-        <img
-            id="profile-image"
-            src="../images/admin.png"
-            alt="Admin Profile">
+                <li id="menu-access-requests">
+                    <a href="access-requests.html">Access Requests</a>
+                </li>
 
-        <br>
+                <li id="menu-active-readers">
+                    <a href="active-readers.html">Active Readers</a>
+                </li>
 
-        <input
-            type="file"
-            id="upload-profile-image"
-            accept="image/*">
+                <li id="menu-members">
+                    <a href="members.html">Members</a>
+                </li>
 
-    </section>
+                <li id="menu-categories">
+                    <a href="categories.html">Categories</a>
+                </li>
 
-    <!-- Profile Information -->
+                <li id="menu-profile">
+                    <a href="profile.html">Profile</a>
+                </li>
 
-    <section id="profile-information">
+                <li id="menu-logout">
+                    <a href="../index.html">Logout</a>
+                </li>
 
-        <form id="profile-form">
+            </ul>
 
-            <label for="admin-name">
-                Full Name
-            </label>
+        </nav>
 
-            <input
-                type="text"
-                id="admin-name"
-                name="adminName"
-                placeholder="Enter Full Name">
+    </aside>
 
-            <br><br>
+    <!-- Main Content -->
 
-            <label for="admin-email">
-                Email
-            </label>
+    <main id="main-content">
 
-            <input
-                type="email"
-                id="admin-email"
-                name="adminEmail"
-                placeholder="Enter Email">
+        <div id="profile-page">
 
-            <br><br>
+            <!-- Page Header -->
 
-            <label for="admin-phone">
-                Phone Number
-            </label>
+            <header id="profile-header">
 
-            <input
-                type="tel"
-                id="admin-phone"
-                name="adminPhone"
-                placeholder="Enter Phone Number">
+                <h1 id="profile-title">
+                    Admin Profile
+                </h1>
 
-            <br><br>
+                <p id="profile-description">
+                    View and update your profile information.
+                </p>
 
-            <button
-                type="submit"
-                id="update-profile-btn">
+            </header>
 
-                Update Profile
+            <!-- Profile Picture -->
 
-            </button>
+            <section id="profile-picture-section">
 
-        </form>
+                <img
+                    id="profile-image"
+                    src="../images/admin.png"
+                    alt="Admin Profile">
 
-    </section>
+                <br>
 
-    <!-- Change Password -->
+                <input
+                    type="file"
+                    id="upload-profile-image"
+                    accept="image/*">
 
-    <section id="password-section">
+            </section>
 
-        <h2 id="password-title">
-            Change Password
-        </h2>
+            <!-- Profile Information -->
 
-        <form id="password-form">
+            <section id="profile-information">
 
-            <label for="current-password">
-                Current Password
-            </label>
+                <form id="profile-form">
 
-            <input
-                type="password"
-                id="current-password"
-                name="currentPassword">
+                    <label for="admin-name">
+                        Full Name
+                    </label>
 
-            <br><br>
+                    <input
+                        type="text"
+                        id="admin-name"
+                        name="adminName"
+                        placeholder="Enter Full Name">
 
-            <label for="new-password">
-                New Password
-            </label>
+                    <br><br>
 
-            <input
-                type="password"
-                id="new-password"
-                name="newPassword">
+                    <label for="admin-email">
+                        Email
+                    </label>
 
-            <br><br>
+                    <input
+                        type="email"
+                        id="admin-email"
+                        name="adminEmail"
+                        placeholder="Enter Email">
 
-            <label for="confirm-password">
-                Confirm Password
-            </label>
+                    <br><br>
 
-            <input
-                type="password"
-                id="confirm-password"
-                name="confirmPassword">
+                    <label for="admin-phone">
+                        Phone Number
+                    </label>
 
-            <br><br>
+                    <input
+                        type="tel"
+                        id="admin-phone"
+                        name="adminPhone"
+                        placeholder="Enter Phone Number">
 
-            <button
-                type="submit"
-                id="change-password-btn">
+                    <br><br>
 
-                Change Password
+                    <button
+                        type="submit"
+                        id="update-profile-btn">
 
-            </button>
+                        Update Profile
 
-        </form>
+                    </button>
 
-    </section>
+                </form>
 
-    <!-- Logout -->
+            </section>
 
-    <section id="logout-section">
+            <!-- Change Password -->
 
-        <button id="logout-btn">
+            <section id="password-section">
 
-            Logout
+                <h2 id="password-title">
+                    Change Password
+                </h2>
 
-        </button>
+                <form id="password-form">
 
-    </section>
+                    <label for="current-password">
+                        Current Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="current-password"
+                        name="currentPassword">
+
+                    <br><br>
+
+                    <label for="new-password">
+                        New Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="new-password"
+                        name="newPassword">
+
+                    <br><br>
+
+                    <label for="confirm-password">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirm-password"
+                        name="confirmPassword">
+
+                    <br><br>
+
+                    <button
+                        type="submit"
+                        id="change-password-btn">
+
+                        Change Password
+
+                    </button>
+
+                </form>
+
+            </section>
+
+            <!-- Logout -->
+
+            <section id="logout-section">
+
+                <a href="../index.html">
+
+                    <button id="logout-btn">
+
+                        Logout
+
+                    </button>
+
+                </a>
+
+            </section>
+
+        </div>
+
+    </main>
 
 </div>
 

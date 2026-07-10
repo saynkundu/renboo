@@ -9,252 +9,296 @@
 
 <body>
 
-<div id="access-request-page">
+<div id="access-request-container">
 
-    <!-- Page Header -->
+    <!-- Sidebar -->
 
-    <header id="request-header">
+    <aside id="sidebar">
 
-        <div id="header-left">
-
-            <h1 id="page-title">
-                Access Requests
-            </h1>
-
-            <p id="page-description">
-                Review member requests and grant or deny access to digital books.
-            </p>
-
+        <div id="logo-section">
+            <h2 id="library-logo">📚 Digital Library</h2>
         </div>
 
-    </header>
+        <nav id="sidebar-menu">
+
+            <ul id="menu-list">
+
+                <li id="menu-dashboard">
+                    <a href="dashboard.html">Dashboard</a>
+                </li>
+
+                <li id="menu-book-catalog">
+                    <a href="book-catalog.html">Book Catalog</a>
+                </li>
+
+                <li id="menu-access-requests">
+                    <a href="access-requests.html">Access Requests</a>
+                </li>
+
+                <li id="menu-active-readers">
+                    <a href="active-readers.html">Active Readers</a>
+                </li>
+
+                <li id="menu-members">
+                    <a href="members.html">Members</a>
+                </li>
+
+                <li id="menu-categories">
+                    <a href="categories.html">Categories</a>
+                </li>
+
+                <li id="menu-profile">
+                    <a href="profile.html">Profile</a>
+                </li>
+
+                <li id="menu-logout">
+                    <a href="../index.html">Logout</a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+
+    <main id="main-content">
+
+        <div id="access-request-page">
+
+            <!-- Page Header -->
+
+            <header id="request-header">
+
+                <div id="header-left">
+
+                    <h1 id="page-title">
+                        Access Requests
+                    </h1>
+
+                    <p id="page-description">
+                        Review member requests and grant or deny access to digital books.
+                    </p>
+
+                </div>
+
+            </header>
 
 
-    <!-- Search & Filter -->
+            <!-- Search & Filter -->
 
-    <section id="request-controls">
+            <section id="request-controls">
 
-        <div id="search-container">
+                <div id="search-container">
 
-            <input
-                type="text"
-                id="search-user"
-                placeholder="Search by Member Name">
+                    <input
+                        type="text"
+                        id="search-user"
+                        placeholder="Search by Member Name">
 
-        </div>
+                </div>
 
-        <div id="filter-container">
+                <div id="filter-container">
 
-            <select id="status-filter">
+                    <select id="status-filter">
 
-                <option value="">
-                    All Requests
-                </option>
+                        <option value="">
+                            All Requests
+                        </option>
 
-                <option value="pending">
-                    Pending
-                </option>
+                        <option value="pending">
+                            Pending
+                        </option>
 
-                <option value="approved">
-                    Approved
-                </option>
+                        <option value="approved">
+                            Approved
+                        </option>
 
-                <option value="rejected">
-                    Rejected
-                </option>
+                        <option value="rejected">
+                            Rejected
+                        </option>
 
-            </select>
+                    </select>
 
-        </div>
+                </div>
 
-    </section>
-
-
-    <!-- Pending Requests -->
-
-    <section id="request-list">
+            </section>
 
 
-        <!-- Request Card -->
+            <!-- Pending Requests -->
 
-        <div class="request-card" id="request-card-1">
+            <section id="request-list">
 
-            <div class="member-info">
 
-                <h2 id="member-name-1">
-                    Rahul Sharma
-                </h2>
+                <!-- Request Card -->
 
-                <p id="member-email-1">
-                    rahul@gmail.com
-                </p>
+                <div class="request-card" id="request-card-1">
 
-            </div>
+                    <div class="member-info">
 
-            <div class="book-info">
+                        <h2 id="member-name-1">
+                            Rahul Sharma
+                        </h2>
 
-                <p id="book-title-1">
-                    Book :
-                    Java Programming
-                </p>
+                        <p id="member-email-1">
+                            rahul@gmail.com
+                        </p>
 
-                <p id="book-category-1">
-                    Category :
-                    Programming
-                </p>
+                    </div>
 
-                <p id="requested-date-1">
-                    Requested On :
-                    10 July 2026
-                </p>
+                    <div class="book-info">
 
-                <p id="subscription-days-1">
-                    Requested Access :
-                    7 Days
-                </p>
+                        <p id="book-title-1">
+                            Book :
+                            Java Programming
+                        </p>
 
-            </div>
+                        <p id="book-category-1">
+                            Category :
+                            Programming
+                        </p>
 
-            <div class="request-message">
+                        <p id="requested-date-1">
+                            Requested On :
+                            10 July 2026
+                        </p>
 
-                <label for="message-1">
-                    Member Message
-                </label>
+                        <p id="subscription-days-1">
+                            Requested Access :
+                            7 Days
+                        </p>
 
-                <textarea
-                    id="message-1"
-                    rows="3"
-                    readonly>
+                    </div>
+
+                    <div class="request-message">
+
+                        <label for="message-1">
+                            Member Message
+                        </label>
+
+                        <textarea
+                            id="message-1"
+                            rows="3"
+                            readonly>
 
 Need this book for semester preparation.
 
-                </textarea>
+                        </textarea>
 
-            </div>
+                    </div>
 
-            <div class="request-actions">
+                    <div class="request-actions">
 
-                <button id="approve-btn-1">
+                        <button id="approve-btn-1">
+                            Approve
+                        </button>
 
-                    Approve
+                        <button id="reject-btn-1">
+                            Reject
+                        </button>
 
-                </button>
+                    </div>
 
-                <button id="reject-btn-1">
-
-                    Reject
-
-                </button>
-
-            </div>
-
-        </div>
+                </div>
 
 
 
-        <!-- Second Card -->
+                <!-- Second Card -->
 
-        <div class="request-card" id="request-card-2">
+                <div class="request-card" id="request-card-2">
 
-            <div class="member-info">
+                    <div class="member-info">
 
-                <h2 id="member-name-2">
-                    Priya Das
-                </h2>
+                        <h2 id="member-name-2">
+                            Priya Das
+                        </h2>
 
-                <p id="member-email-2">
-                    priya@gmail.com
-                </p>
+                        <p id="member-email-2">
+                            priya@gmail.com
+                        </p>
 
-            </div>
+                    </div>
 
-            <div class="book-info">
+                    <div class="book-info">
 
-                <p id="book-title-2">
-                    Book :
-                    Database Management System
-                </p>
+                        <p id="book-title-2">
+                            Book :
+                            Database Management System
+                        </p>
 
-                <p id="book-category-2">
-                    Category :
-                    Database
-                </p>
+                        <p id="book-category-2">
+                            Category :
+                            Database
+                        </p>
 
-                <p id="requested-date-2">
-                    Requested On :
-                    9 July 2026
-                </p>
+                        <p id="requested-date-2">
+                            Requested On :
+                            9 July 2026
+                        </p>
 
-                <p id="subscription-days-2">
-                    Requested Access :
-                    15 Days
-                </p>
+                        <p id="subscription-days-2">
+                            Requested Access :
+                            15 Days
+                        </p>
 
-            </div>
+                    </div>
 
-            <div class="request-message">
+                    <div class="request-message">
 
-                <label for="message-2">
+                        <label for="message-2">
+                            Member Message
+                        </label>
 
-                    Member Message
-
-                </label>
-
-                <textarea
-                    id="message-2"
-                    rows="3"
-                    readonly>
+                        <textarea
+                            id="message-2"
+                            rows="3"
+                            readonly>
 
 Need this book for project work.
 
-                </textarea>
+                        </textarea>
 
-            </div>
+                    </div>
 
-            <div class="request-actions">
+                    <div class="request-actions">
 
-                <button id="approve-btn-2">
+                        <button id="approve-btn-2">
+                            Approve
+                        </button>
 
-                    Approve
+                        <button id="reject-btn-2">
+                            Reject
+                        </button>
 
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Pagination -->
+
+            <section id="pagination">
+
+                <button id="previous-page">
+                    Previous
                 </button>
 
-                <button id="reject-btn-2">
+                <span id="page-number">
+                    Page 1 of 5
+                </span>
 
-                    Reject
-
+                <button id="next-page">
+                    Next
                 </button>
 
-            </div>
+            </section>
 
         </div>
 
-    </section>
-
-
-    <!-- Pagination -->
-
-    <section id="pagination">
-
-        <button id="previous-page">
-
-            Previous
-
-        </button>
-
-        <span id="page-number">
-
-            Page 1 of 5
-
-        </span>
-
-        <button id="next-page">
-
-            Next
-
-        </button>
-
-    </section>
+    </main>
 
 </div>
 

@@ -7,180 +7,238 @@
 </head>
 <body>
 
-<div id="categories-page">
+<div id="categories-container">
 
-    <!-- Header -->
+    <!-- Sidebar -->
+    <aside id="sidebar">
 
-    <header id="page-header">
+        <div id="logo-section">
+            <h2 id="library-logo">📚 Digital Library</h2>
+        </div>
 
-        <h1 id="page-title">
-            Book Categories
-        </h1>
+        <nav id="sidebar-menu">
 
-        <p id="page-description">
-            Manage all book categories available in the digital library.
-        </p>
+            <ul id="menu-list">
 
-    </header>
+                <li id="menu-dashboard">
+                    <a href="dashboard.html">Dashboard</a>
+                </li>
 
-    <!-- Add Category -->
+                <li id="menu-book-catalog">
+                    <a href="book-catalog.html">Book Catalog</a>
+                </li>
 
-    <section id="add-category-section">
+                <li id="menu-access-requests">
+                    <a href="access-requests.html">Access Requests</a>
+                </li>
 
-        <h2 id="add-category-title">
-            Add New Category
-        </h2>
+                <li id="menu-active-readers">
+                    <a href="active-readers.html">Active Readers</a>
+                </li>
 
-        <form id="category-form">
+                <li id="menu-members">
+                    <a href="members.html">Members</a>
+                </li>
 
-            <input
-                type="text"
-                id="category-name"
-                name="categoryName"
-                placeholder="Category Name"
-                required>
+                <li id="menu-categories">
+                    <a href="categories.html">Categories</a>
+                </li>
 
-            <textarea
-                id="category-description"
-                name="categoryDescription"
-                placeholder="Category Description"
-                rows="3">
-            </textarea>
+                <li id="menu-profile">
+                    <a href="profile.html">Profile</a>
+                </li>
 
-            <button
-                type="submit"
-                id="add-category-btn">
-                Add Category
-            </button>
+                <li id="menu-logout">
+                    <a href="../index.html">Logout</a>
+                </li>
 
-        </form>
+            </ul>
 
-    </section>
+        </nav>
 
-    <!-- Search -->
+    </aside>
 
-    <section id="search-section">
+    <!-- Main Content -->
+    <main id="main-content">
 
-        <input
-            type="text"
-            id="search-category"
-            placeholder="Search Category">
+        <div id="categories-page">
 
-    </section>
+            <!-- Header -->
 
-    <!-- Category Table -->
+            <header id="page-header">
 
-    <section id="category-table-section">
+                <h1 id="page-title">
+                    Book Categories
+                </h1>
 
-        <table id="category-table" border="1">
+                <p id="page-description">
+                    Manage all book categories available in the digital library.
+                </p>
 
-            <thead>
+            </header>
 
-                <tr>
+            <!-- Add Category -->
 
-                    <th>ID</th>
+            <section id="add-category-section">
 
-                    <th>Category Name</th>
+                <h2 id="add-category-title">
+                    Add New Category
+                </h2>
 
-                    <th>Description</th>
+                <form id="category-form">
 
-                    <th>Total Books</th>
+                    <input
+                        type="text"
+                        id="category-name"
+                        name="categoryName"
+                        placeholder="Category Name"
+                        required>
 
-                    <th>Actions</th>
+                    <textarea
+                        id="category-description"
+                        name="categoryDescription"
+                        placeholder="Category Description"
+                        rows="3">
+                    </textarea>
 
-                </tr>
+                    <button
+                        type="submit"
+                        id="add-category-btn">
+                        Add Category
+                    </button>
 
-            </thead>
+                </form>
 
-            <tbody>
+            </section>
 
-                <tr id="category-row-1">
+            <!-- Search -->
 
-                    <td id="category-id-1">
-                        C001
-                    </td>
+            <section id="search-section">
 
-                    <td id="category-title-1">
-                        Programming
-                    </td>
+                <input
+                    type="text"
+                    id="search-category"
+                    placeholder="Search Category">
 
-                    <td id="category-desc-1">
-                        Programming related books
-                    </td>
+            </section>
 
-                    <td id="book-count-1">
-                        54
-                    </td>
+            <!-- Category Table -->
 
-                    <td>
+            <section id="category-table-section">
 
-                        <button id="edit-category-1">
-                            Edit
-                        </button>
+                <table id="category-table" border="1">
 
-                        <button id="delete-category-1">
-                            Delete
-                        </button>
+                    <thead>
 
-                    </td>
+                        <tr>
 
-                </tr>
+                            <th>ID</th>
 
-                <tr id="category-row-2">
+                            <th>Category Name</th>
 
-                    <td id="category-id-2">
-                        C002
-                    </td>
+                            <th>Description</th>
 
-                    <td id="category-title-2">
-                        Database
-                    </td>
+                            <th>Total Books</th>
 
-                    <td id="category-desc-2">
-                        Database Management Books
-                    </td>
+                            <th>Actions</th>
 
-                    <td id="book-count-2">
-                        23
-                    </td>
+                        </tr>
 
-                    <td>
+                    </thead>
 
-                        <button id="edit-category-2">
-                            Edit
-                        </button>
+                    <tbody>
 
-                        <button id="delete-category-2">
-                            Delete
-                        </button>
+                        <tr id="category-row-1">
 
-                    </td>
+                            <td id="category-id-1">
+                                C001
+                            </td>
 
-                </tr>
+                            <td id="category-title-1">
+                                Programming
+                            </td>
 
-            </tbody>
+                            <td id="category-desc-1">
+                                Programming related books
+                            </td>
 
-        </table>
+                            <td id="book-count-1">
+                                54
+                            </td>
 
-    </section>
+                            <td>
 
-    <!-- Pagination -->
+                                <button id="edit-category-1">
+                                    Edit
+                                </button>
 
-    <section id="pagination-section">
+                                <button id="delete-category-1">
+                                    Delete
+                                </button>
 
-        <button id="previous-page">
-            Previous
-        </button>
+                            </td>
 
-        <span id="page-number">
-            Page 1 of 2
-        </span>
+                        </tr>
 
-        <button id="next-page">
-            Next
-        </button>
+                        <tr id="category-row-2">
 
-    </section>
+                            <td id="category-id-2">
+                                C002
+                            </td>
+
+                            <td id="category-title-2">
+                                Database
+                            </td>
+
+                            <td id="category-desc-2">
+                                Database Management Books
+                            </td>
+
+                            <td id="book-count-2">
+                                23
+                            </td>
+
+                            <td>
+
+                                <button id="edit-category-2">
+                                    Edit
+                                </button>
+
+                                <button id="delete-category-2">
+                                    Delete
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+            <!-- Pagination -->
+
+            <section id="pagination-section">
+
+                <button id="previous-page">
+                    Previous
+                </button>
+
+                <span id="page-number">
+                    Page 1 of 2
+                </span>
+
+                <button id="next-page">
+                    Next
+                </button>
+
+            </section>
+
+        </div>
+
+    </main>
 
 </div>
 
