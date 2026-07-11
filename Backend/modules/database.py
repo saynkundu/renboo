@@ -10,8 +10,8 @@ class MySQLDatabase:
         try:
             self.connection = mysql.connector.connect(
                 host="localhost",
-                user="root",
-                password=os.getenv("DATABASE+PASSWORD"),
+                user=os.getenv("DATABASE_user"),
+                password=os.getenv("DATABASE_PASSWORD"),
                 database="library_management"
             )
 
